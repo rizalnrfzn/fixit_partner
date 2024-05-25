@@ -2,6 +2,7 @@ import 'package:fixit_partner/core/core.dart';
 import 'package:fixit_partner/features/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 class ChatBubble extends StatelessWidget {
   const ChatBubble({
@@ -52,7 +53,7 @@ class ChatBubble extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  '${chat.timestamp!.hour}.${chat.timestamp!.minute}',
+                  DateFormat.Hm().format(chat.timestamp!),
                   style: textTheme.labelMedium!.copyWith(color: Colors.grey),
                 ),
                 SizedBox(width: Dimens.space8),

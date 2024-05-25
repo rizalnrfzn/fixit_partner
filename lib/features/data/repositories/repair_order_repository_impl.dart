@@ -93,4 +93,14 @@ class RepairOrderRepositoryImpl implements RepairOrderRepository {
       (r) => right(r.toEntity()),
     );
   }
+
+  @override
+  Future<Either<Failure, RepairOrder>> cancelOrder(RepairOrder params) async {
+    final response = await _datasource.cancelOrder(params);
+
+    return response.fold(
+      (l) => left(l),
+      (r) => right(r.toEntity()),
+    );
+  }
 }

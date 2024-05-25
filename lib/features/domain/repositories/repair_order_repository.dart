@@ -18,4 +18,6 @@ abstract class RepairOrderRepository {
   Future<Either<Failure, RepairOrder>> electronicRepair(RepairOrder params);
 
   Future<Either<Failure, RepairOrder>> paymentConfirmation(RepairOrder params);
+
+  Future<Either<Failure, RepairOrder>> cancelOrder(RepairOrder params);
 }

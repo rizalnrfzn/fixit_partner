@@ -5,6 +5,7 @@ class Parent extends StatefulWidget {
   final PreferredSize? appBar;
   final bool avoidBottomInset;
   final Widget? floatingButton;
+  final FloatingActionButtonLocation? floatingButtonLocation;
   final Widget? bottomNavigation;
   final Widget? drawer;
   final Widget? endDrawer;
@@ -18,6 +19,7 @@ class Parent extends StatefulWidget {
     this.appBar,
     this.avoidBottomInset = true,
     this.floatingButton,
+    this.floatingButtonLocation,
     this.backgroundColor,
     this.bottomNavigation,
     this.drawer,
@@ -45,6 +47,7 @@ class _ParentState extends State<Parent> {
         drawer: widget.drawer,
         endDrawer: widget.endDrawer,
         floatingActionButton: widget.floatingButton,
+        floatingActionButtonLocation: widget.floatingButtonLocation,
         bottomNavigationBar: widget.bottomNavigation,
       ),
     );

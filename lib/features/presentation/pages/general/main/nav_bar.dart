@@ -47,9 +47,9 @@ class _NavBarState extends State<NavBar> {
     if (index == 0) {
       context.go(Routes.dashboard.path);
     } else if (index == 1) {
-      context.go(Routes.map.path);
-    } else if (index == 2) {
       context.go(Routes.order.path);
+    } else if (index == 2) {
+      context.go(Routes.income.path);
     } else if (index == 3) {
       context.go(Routes.chat.path);
     } else if (index == 4) {

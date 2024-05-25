@@ -15,12 +15,14 @@ class LocationCubit extends Cubit<LocationState> {
     this._getDirection,
     this._changeLocation,
     this._streamLocation,
+    this._updateLocation,
   ) : super(const LocationState.initial());
 
   final GetLocationUsecase _getLocation;
   final GetDirectionUsecase _getDirection;
   final ChangeLocationUsecase _changeLocation;
   final StreamLocation _streamLocation;
+  final UpdateLocationUsecse _updateLocation;
 
   StreamSubscription? _locationSubscription;
 
@@ -102,11 +104,26 @@ class LocationCubit extends Cubit<LocationState> {
     );
   }
 
+  Future<void> updateLocation(LatLng latlng) async {
+    final data = await _updateLocation.call(UpdateLocationParams(latlng));
+
+    data.fold(
+      (l) {
+        if (l is FirestoreFailure) {
+          emit(_Failure(l.code));
+        }
+      },
+      (r) => null,
+    );
+  }
+
   void streamLocation() async {
     _locationSubscription?.cancel();
     _locationSubscription = _streamLocation.call().listen(
-      (event) {
+      (event) async {
         currentLocation = event;
+        await updateLocation(event);
+        Future.delayed(const Duration(seconds: 2));
         emit(_Success(geolocation, direction, currentLocation));
       },
     );

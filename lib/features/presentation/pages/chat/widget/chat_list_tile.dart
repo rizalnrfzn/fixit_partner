@@ -4,6 +4,7 @@ import 'package:fixit_partner/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 
 class ChatListTile extends StatelessWidget {
   const ChatListTile({
@@ -43,9 +44,31 @@ class ChatListTile extends StatelessWidget {
         border: Dimens.space2,
         onTap: () {},
       ),
-      trailing: Text(
-        '${chatList.lastTime!.hour}.'
-        '${chatList.lastTime!.minute}',
+      trailing: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            DateFormat.Hm().format(chatList.lastTime!),
+          ),
+          if (chatList.technicianUnread != null &&
+              chatList.technicianUnread != 0)
+            CircleAvatar(
+              backgroundColor: Theme.of(context).extension<MyAppColors>()!.blue,
+              maxRadius: Dimens.space8,
+              child: Center(
+                child: Text(
+                  '${chatList.technicianUnread}',
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: Theme.of(context)
+                            .extension<MyAppColors>()!
+                            .background,
+                      ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+        ],
       ),
       onTap: () {
         context.read<ChatCubit>().readChat(ReadChatParams(chatList));
@@ -53,7 +76,8 @@ class ChatListTile extends StatelessWidget {
           Routes.roomChat.path,
           extra: {
             'chatListId': chatList.id,
-            'client': client,
+            'clientName': client.name,
+            'clientPicture': client.profilePicture,
           },
         );
       },

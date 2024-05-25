@@ -101,9 +101,9 @@ class RegisterDataSummaryPage extends StatelessWidget {
                         horizontal: Dimens.space24, vertical: Dimens.space12),
                     child: Wrap(
                       children: List.generate(
-                        userData.electronics!.length,
+                        userData.electronicId!.length,
                         (index) => ElectronicChip(
-                          electronicId: userData.electronics![index],
+                          electronicId: userData.electronicId![index],
                         ),
                       ),
                     ),

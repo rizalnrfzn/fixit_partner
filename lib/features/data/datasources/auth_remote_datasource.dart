@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:fixit_partner/utils/utils.dart';
 import 'package:path/path.dart';
 
 import '../../../core/core.dart';
@@ -63,6 +66,11 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       List<String> images = [];
       List<String> files = [];
 
+      for (var url in params.userData.images!) {
+        String name = getImageNameFromFirebase(url);
+        imageRef.child('$name.png');
+      }
+
       if (params.profilePicture != null) {
         await imageRef
             .child('profilePicture.png')
@@ -76,8 +84,9 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
 
       if (params.images.isNotEmpty) {
         for (var i = 0; i < params.images.length; i++) {
-          await imageRef.child('$i.png').putFile(params.images[i]);
-          final linkImages = await imageRef.child('$i.png').getDownloadURL();
+          final name = Random().nextInt(10000000000);
+          await imageRef.child('$name.png').putFile(params.images[i]);
+          final linkImages = await imageRef.child('$name.png').getDownloadURL();
           images.add(linkImages);
         }
       }
@@ -112,23 +121,37 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       EditProfileParams params) async {
     try {
       final account = _auth.currentUser!;
-      final imageRef = _storage.child('${account.uid}/profilePicture.png');
+      final profileRef = _storage.child('${account.uid}/profilePicture.png');
+      final imageRef = _storage.child('${account.uid}/images');
       String profilePicture;
       List<String> images = [];
 
       if (params.newProfilePicture != null) {
-        await imageRef.putFile(params.newProfilePicture!);
+        await profileRef.putFile(params.newProfilePicture!);
         profilePicture = await imageRef.getDownloadURL();
       } else {
         profilePicture = params.userData.profilePicture!;
       }
 
+      for (var url in params.userData.images!) {
+        if (!(params.oldImages.contains(url))) {
+          await imageRef.child(getImageNameFromFirebase(url)).delete();
+        } else {
+          images.add(url);
+        }
+      }
+
       if (params.newImages.isNotEmpty) {
         for (var i = 0; i < params.newImages.length; i++) {
-          await imageRef.child('$i.png').putFile(params.newImages[i]);
-          final linkImages = await imageRef.child('$i.png').getDownloadURL();
+          final name = Random().nextInt(100000000);
+          await imageRef.child('$name.png').putFile(params.newImages[i]);
+          final linkImages = await imageRef.child('$name.png').getDownloadURL();
           images.add(linkImages);
         }
+      }
+
+      if (images.isEmpty) {
+        images.addAll(params.userData.images!);
       }
 
       final data = params.userData

@@ -14,11 +14,13 @@ class WaitingTechnicianContainer extends StatelessWidget {
     required this.repairOrder,
     required this.direction,
     required this.mapHeight,
+    required this.showMap,
   });
 
   final RepairOrder repairOrder;
   final Direction direction;
   final double mapHeight;
+  final bool showMap;
 
   @override
   Widget build(BuildContext context) {
@@ -117,82 +119,83 @@ class WaitingTechnicianContainer extends StatelessWidget {
           ],
         ),
         SpacerV(value: Dimens.space12),
-        SizedBox(
-          height: mapHeight,
-          child: Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: FlutterMap(
-                  mapController: mapController,
-                  options: MapOptions(
-                    minZoom: 13,
-                    maxZoom: 18,
-                    initialZoom: 15,
-                    initialCenter:
-                        context.read<LocationCubit>().currentLocation!,
-                    keepAlive: true,
+        if (showMap)
+          SizedBox(
+            height: mapHeight,
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: FlutterMap(
+                    mapController: mapController,
+                    options: MapOptions(
+                      minZoom: 13,
+                      maxZoom: 18,
+                      initialZoom: 15,
+                      initialCenter:
+                          context.read<LocationCubit>().currentLocation!,
+                      keepAlive: true,
+                    ),
+                    children: [
+                      TileLayer(
+                        urlTemplate:
+                            'https://api.mapbox.com/styles/v1/levelsekawan/{mapStyleId}/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}',
+                        additionalOptions: const {
+                          'mapStyleId': ListAPI.streetStyle,
+                          'accessToken': ListAPI.mapBoxAccessToken,
+                        },
+                      ),
+                      PolylineLayer(
+                        polylines: [
+                          Polyline(
+                            points: direction.routes![0].geometry!.coordinates!,
+                            strokeWidth: 5,
+                            color: colorTheme.blue!,
+                          ),
+                        ],
+                      ),
+                      BlocBuilder<LocationCubit, LocationState>(
+                        builder: (_, __) {
+                          return MarkerLayer(
+                            markers: [
+                              Marker(
+                                point: repairOrder.clientLocation!,
+                                child: ProfilePicture(
+                                  pictureUrl: context
+                                      .read<ClientCubit>()
+                                      .clients
+                                      .firstWhere((element) =>
+                                          element.uid == repairOrder.clientUid)
+                                      .profilePicture!,
+                                  onTap: () {},
+                                  radius: Dimens.space12,
+                                  border: Dimens.space2,
+                                ),
+                              ),
+                              Marker(
+                                point: context
+                                    .read<LocationCubit>()
+                                    .currentLocation!,
+                                child: ProfilePicture(
+                                  pictureUrl: context
+                                      .read<AuthCubit>()
+                                      .authUser!
+                                      .profilePicture!,
+                                  onTap: () {},
+                                  radius: Dimens.space12,
+                                  border: Dimens.space2,
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      )
+                    ],
                   ),
-                  children: [
-                    TileLayer(
-                      urlTemplate:
-                          'https://api.mapbox.com/styles/v1/levelsekawan/{mapStyleId}/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}',
-                      additionalOptions: const {
-                        'mapStyleId': ListAPI.streetStyle,
-                        'accessToken': ListAPI.mapBoxAccessToken,
-                      },
-                    ),
-                    PolylineLayer(
-                      polylines: [
-                        Polyline(
-                          points: direction.routes![0].geometry!.coordinates!,
-                          strokeWidth: 5,
-                          color: colorTheme.blue!,
-                        ),
-                      ],
-                    ),
-                    BlocBuilder<LocationCubit, LocationState>(
-                      builder: (_, __) {
-                        return MarkerLayer(
-                          markers: [
-                            Marker(
-                              point: repairOrder.clientLocation!,
-                              child: ProfilePicture(
-                                pictureUrl: context
-                                    .read<ClientCubit>()
-                                    .clients
-                                    .firstWhere((element) =>
-                                        element.uid == repairOrder.clientUid)
-                                    .profilePicture!,
-                                onTap: () {},
-                                radius: Dimens.space12,
-                                border: Dimens.space2,
-                              ),
-                            ),
-                            Marker(
-                              point: context
-                                  .read<LocationCubit>()
-                                  .currentLocation!,
-                              child: ProfilePicture(
-                                pictureUrl: context
-                                    .read<AuthCubit>()
-                                    .authUser!
-                                    .profilePicture!,
-                                onTap: () {},
-                                radius: Dimens.space12,
-                                border: Dimens.space2,
-                              ),
-                            ),
-                          ],
-                        );
-                      },
-                    )
-                  ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
         SpacerV(value: Dimens.space16),
         BlocBuilder<LocationCubit, LocationState>(
           builder: (_, __) {
@@ -206,7 +209,7 @@ class WaitingTechnicianContainer extends StatelessWidget {
                         repairOrder.clientLocation!.latitude,
                         repairOrder.clientLocation!.longitude,
                       ) <=
-                      30
+                      100
                   ? arrive
                   : null,
               style: FilledButton.styleFrom(

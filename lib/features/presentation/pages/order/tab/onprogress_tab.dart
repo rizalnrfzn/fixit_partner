@@ -25,10 +25,10 @@ class _OnprogressTabState extends State<OnprogressTab> {
           orElse: () => const Center(
             child: Loading(),
           ),
-          stream: (orders) {
+          success: (orders) {
             return orders
                     .where((element) =>
-                        element.canceled != true &&
+                        element.cancelled != true &&
                         !(filterOnProgres.contains(element.status)))
                     .isEmpty
                 ? const Center(
@@ -40,7 +40,7 @@ class _OnprogressTabState extends State<OnprogressTab> {
                       children: List.generate(
                         orders
                             .where((element) =>
-                                element.canceled != true &&
+                                element.cancelled != true &&
                                 !(filterOnProgres.contains(element.status)))
                             .length,
                         (index) => BlocProvider(
@@ -48,9 +48,10 @@ class _OnprogressTabState extends State<OnprogressTab> {
                           child: OrderListTile(
                             repairOrder: orders
                                 .where((element) =>
-                                    element.canceled != true &&
+                                    element.cancelled != true &&
                                     !(filterOnProgres.contains(element.status)))
                                 .toList()[index],
+                            showMap: true,
                           ),
                         ),
                       ),

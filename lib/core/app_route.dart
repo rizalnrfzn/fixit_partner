@@ -32,7 +32,6 @@ enum Routes {
   waitingVerification('/waiting-verification'),
 
   // technician
-  map('/map'),
   technicianList('/technician/list'),
   technicianDetail('/technician/detail'),
   review('/review'),
@@ -42,6 +41,10 @@ enum Routes {
   // order page
   order('/order'),
   orderDetail('/order/detail'),
+
+  // income page
+  income('/income'),
+  incomeStatement('/income/statement'),
 
   // chat
   chat('/chat'),
@@ -107,12 +110,12 @@ class AppRoute {
           if (MainBoxMixin.mainBox?.get(MainBoxKeys.isVerified.name) as bool? ??
               false) {
             context.read<ElectronicCubit>().streamElectronics();
+            context.read<ClientCubit>().getClients();
             context.read<OrderCubit>().streamOrders(
                 MainBoxMixin.mainBox?.get(MainBoxKeys.authUserId.name));
-            context.read<LocationCubit>().streamLocation();
             context.read<ChatCubit>().streamChatList(
                 MainBoxMixin.mainBox?.get(MainBoxKeys.authUserId.name));
-            context.read<ClientCubit>().getClients();
+            context.read<LocationCubit>().streamLocation();
 
             return Routes.root.path;
           } else {
@@ -224,10 +227,12 @@ class AppRoute {
         parentNavigatorKey: _rootNavigator,
         path: Routes.editProfile.path,
         name: Routes.editProfile.name,
-        builder: (_, __) => BlocProvider(
-          create: (_) => sl<EditProfileCubit>(),
-          child: const EditProfilePage(),
-        ),
+        builder: (_, state) {
+          return BlocProvider(
+            create: (_) => sl<EditProfileCubit>(),
+            child: const EditProfilePage(),
+          );
+        },
       ),
       GoRoute(
         parentNavigatorKey: _rootNavigator,
@@ -236,24 +241,33 @@ class AppRoute {
         builder: (_, state) {
           final map = state.extra as Map<String, dynamic>;
           final chatListId = map['chatListId'] as String;
-          final client = map['client'] as Client;
+          final clientName = map['clientName'] as String;
+          final clientPicture = map['clientPicture'] as String;
           return RoomChatPage(
             chatListId: chatListId,
-            client: client,
+            clientName: clientName,
+            clientPicture: clientPicture,
           );
         },
       ),
       GoRoute(
-          parentNavigatorKey: _rootNavigator,
-          path: Routes.orderDetail.path,
-          name: Routes.orderDetail.name,
-          builder: (_, state) {
-            final map = state.extra as String;
-            return BlocProvider<OrderDetailCubit>(
-              create: (context) => sl<OrderDetailCubit>(),
-              child: OrderDetailPage(orderId: map),
-            );
-          }),
+        parentNavigatorKey: _rootNavigator,
+        path: Routes.orderDetail.path,
+        name: Routes.orderDetail.name,
+        builder: (_, state) {
+          final orderId = state.extra as String;
+          return BlocProvider<OrderDetailCubit>(
+            create: (context) => sl<OrderDetailCubit>(),
+            child: OrderDetailPage(orderId: orderId),
+          );
+        },
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigator,
+        path: Routes.incomeStatement.path,
+        name: Routes.incomeStatement.name,
+        builder: (_, __) => const IncomeStatementPage(),
+      ),
       ShellRoute(
         navigatorKey: _shellNavigator,
         builder: (_, __, child) => BlocProvider(
@@ -271,20 +285,18 @@ class AppRoute {
           ),
           GoRoute(
             parentNavigatorKey: _shellNavigator,
-            path: Routes.map.path,
-            name: Routes.map.name,
+            path: Routes.order.path,
+            name: Routes.order.name,
             pageBuilder: (_, __) => const NoTransitionPage(
               child: OrderPage(),
             ),
           ),
           GoRoute(
             parentNavigatorKey: _shellNavigator,
-            path: Routes.order.path,
-            name: Routes.order.name,
+            path: Routes.income.path,
+            name: Routes.income.name,
             pageBuilder: (_, __) => const NoTransitionPage(
-              child: Center(
-                child: Text('income'),
-              ),
+              child: IncomePage(),
             ),
           ),
           GoRoute(

@@ -17,11 +17,13 @@ class EditProfileUsecase extends UseCase<AuthUser, EditProfileParams> {
 class EditProfileParams {
   final AuthUser userData;
   File? newProfilePicture;
+  List<String> oldImages;
   List<File> newImages;
 
   EditProfileParams({
     required this.userData,
     this.newProfilePicture,
+    required this.oldImages,
     required this.newImages,
   });
 }

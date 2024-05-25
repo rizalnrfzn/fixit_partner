@@ -81,7 +81,7 @@ class _OnboardPageState extends State<OnboardPage> {
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: Dimens.space24,
-                vertical: Dimens.space46,
+                vertical: Dimens.space36,
               ),
               child: FilledButton(
                 style: FilledButton.styleFrom(

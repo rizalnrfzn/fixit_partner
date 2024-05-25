@@ -24,6 +24,8 @@ abstract class RepairOrderRemoteDatasource {
 
   Future<Either<Failure, RepairOrderModel>> paymentConfirmation(
       RepairOrder params);
+
+  Future<Either<Failure, RepairOrderModel>> cancelOrder(RepairOrder params);
 }
 
 class RepairOrderRemoteDatasourceImpl implements RepairOrderRemoteDatasource {
@@ -41,6 +43,7 @@ class RepairOrderRemoteDatasourceImpl implements RepairOrderRemoteDatasource {
     try {
       yield* _collRef
           .where('technicianUid', isEqualTo: _auth.currentUser!.uid)
+          .orderBy('dateTime', descending: true)
           .snapshots()
           .map(
             (event) => event.docs
@@ -201,6 +204,10 @@ class RepairOrderRemoteDatasourceImpl implements RepairOrderRemoteDatasource {
   Future<Either<Failure, RepairOrderModel>> paymentConfirmation(
       RepairOrder params) async {
     try {
+      await firebase.collection('technician').doc(params.technicianUid).update({
+        'inOrder': false,
+      });
+
       await firebase.collection('order').doc(params.id).update({
         'status': Status.beriUlasan.name,
       });
@@ -216,6 +223,23 @@ class RepairOrderRemoteDatasourceImpl implements RepairOrderRemoteDatasource {
       return left(FirestoreFailure(e.code));
     } catch (e) {
       return left(FirestoreFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, RepairOrderModel>> cancelOrder(
+      RepairOrder params) async {
+    try {
+      await firebase.collection('order').doc(params.id).update({
+        'cancelled': true,
+        'reasonCancelled': params.reasonCancelled,
+      });
+
+      return Right(params.toModel());
+    } on FirebaseException catch (e) {
+      return Left(FirestoreFailure(e.code));
+    } catch (e) {
+      return Left(FirestoreFailure(e.toString()));
     }
   }
 }

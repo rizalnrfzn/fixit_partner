@@ -24,7 +24,7 @@ _$AuthUserModelImpl _$$AuthUserModelImplFromJson(Map<String, dynamic> json) =>
           json['location'], const LatLngConverter().fromJson),
       currentLocation: _$JsonConverterFromJson<GeoPoint, LatLng>(
           json['currentLocation'], const LatLngConverter().fromJson),
-      electronics: (json['electronics'] as List<dynamic>?)
+      electronicId: (json['electronicId'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       isVerified: json['isVerified'] as bool?,
@@ -50,7 +50,7 @@ Map<String, dynamic> _$$AuthUserModelImplToJson(_$AuthUserModelImpl instance) =>
           instance.location, const LatLngConverter().toJson),
       'currentLocation': _$JsonConverterToJson<GeoPoint, LatLng>(
           instance.currentLocation, const LatLngConverter().toJson),
-      'electronics': instance.electronics,
+      'electronicId': instance.electronicId,
       'isVerified': instance.isVerified,
       'isOnline': instance.isOnline,
       'inOrder': instance.inOrder,

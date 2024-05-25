@@ -11,9 +11,11 @@ class OrderListTile extends StatefulWidget {
   const OrderListTile({
     super.key,
     required this.repairOrder,
+    required this.showMap,
   });
 
   final RepairOrder repairOrder;
+  final bool showMap;
 
   @override
   State<OrderListTile> createState() => _OrderListTileState();
@@ -96,25 +98,13 @@ class _OrderListTileState extends State<OrderListTile> {
                         BlocBuilder<ElectronicCubit, ElectronicState>(
                           builder: (context, state) {
                             return Text(
-                              (MainBoxMixin.mainBox
-                                                  ?.get(MainBoxKeys.locale.name)
-                                              as String? ??
-                                          'id') ==
-                                      'en'
-                                  ? context
-                                      .read<ElectronicCubit>()
-                                      .electronics
-                                      .firstWhere((element) =>
-                                          element.id ==
-                                          widget.repairOrder.electronic)
-                                      .englishName!
-                                  : context
-                                      .read<ElectronicCubit>()
-                                      .electronics
-                                      .firstWhere((element) =>
-                                          element.id ==
-                                          widget.repairOrder.electronic)
-                                      .name!,
+                              context
+                                  .read<ElectronicCubit>()
+                                  .electronics
+                                  .firstWhere((element) =>
+                                      element.id ==
+                                      widget.repairOrder.electronicId)
+                                  .name!,
                               maxLines: 2,
                               style: Theme.of(context).textTheme.bodyMedium,
                             );
@@ -170,9 +160,18 @@ class _OrderListTileState extends State<OrderListTile> {
                         .firstWhere((element) =>
                             element.clientUid == widget.repairOrder.clientUid)
                         .id,
-                    'client': context.read<ClientCubit>().clients.firstWhere(
-                        (element) =>
-                            element.uid == widget.repairOrder.clientUid),
+                    'clientName': context
+                        .read<ClientCubit>()
+                        .clients
+                        .firstWhere((element) =>
+                            element.uid == widget.repairOrder.clientUid)
+                        .name,
+                    'clientPicture': context
+                        .read<ClientCubit>()
+                        .clients
+                        .firstWhere((element) =>
+                            element.uid == widget.repairOrder.clientUid)
+                        .profilePicture,
                   },
                 );
               },
@@ -225,6 +224,7 @@ class _OrderListTileState extends State<OrderListTile> {
                                   direction:
                                       context.read<OrderTileCubit>().direction!,
                                   mapHeight: 350.h,
+                                  showMap: widget.showMap,
                                 ),
                               );
                             } else if (index == 2) {

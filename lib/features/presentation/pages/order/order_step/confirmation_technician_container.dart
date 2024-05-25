@@ -164,22 +164,12 @@ class _ConfirmationTechnicianContainerState
         ),
         RowText(
           left: Strings.of(context)!.electronics,
-          right: (MainBoxMixin.mainBox?.get(MainBoxKeys.locale.name)
-                          as String? ??
-                      'id') ==
-                  'en'
-              ? context
-                  .read<ElectronicCubit>()
-                  .electronics
-                  .firstWhere(
-                      (element) => element.id == widget.repairOrder.electronic)
-                  .englishName!
-              : context
-                  .read<ElectronicCubit>()
-                  .electronics
-                  .firstWhere(
-                      (element) => element.id == widget.repairOrder.electronic)
-                  .name!,
+          right: context
+              .read<ElectronicCubit>()
+              .electronics
+              .firstWhere(
+                  (element) => element.id == widget.repairOrder.electronicId)
+              .name!,
         ),
         RowText(
           left: Strings.of(context)!.client,

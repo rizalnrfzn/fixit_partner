@@ -38,8 +38,8 @@ mixin _$AuthUser {
   set location(LatLng? value) => throw _privateConstructorUsedError;
   LatLng? get currentLocation => throw _privateConstructorUsedError;
   set currentLocation(LatLng? value) => throw _privateConstructorUsedError;
-  List<String>? get electronics => throw _privateConstructorUsedError;
-  set electronics(List<String>? value) => throw _privateConstructorUsedError;
+  List<String>? get electronicId => throw _privateConstructorUsedError;
+  set electronicId(List<String>? value) => throw _privateConstructorUsedError;
   bool? get isVerified => throw _privateConstructorUsedError;
   set isVerified(bool? value) => throw _privateConstructorUsedError;
   bool? get isOnline => throw _privateConstructorUsedError;
@@ -75,7 +75,7 @@ abstract class $AuthUserCopyWith<$Res> {
       String? address,
       LatLng? location,
       LatLng? currentLocation,
-      List<String>? electronics,
+      List<String>? electronicId,
       bool? isVerified,
       bool? isOnline,
       bool? inOrder,
@@ -110,7 +110,7 @@ class _$AuthUserCopyWithImpl<$Res, $Val extends AuthUser>
     Object? address = freezed,
     Object? location = freezed,
     Object? currentLocation = freezed,
-    Object? electronics = freezed,
+    Object? electronicId = freezed,
     Object? isVerified = freezed,
     Object? isOnline = freezed,
     Object? inOrder = freezed,
@@ -163,9 +163,9 @@ class _$AuthUserCopyWithImpl<$Res, $Val extends AuthUser>
           ? _value.currentLocation
           : currentLocation // ignore: cast_nullable_to_non_nullable
               as LatLng?,
-      electronics: freezed == electronics
-          ? _value.electronics
-          : electronics // ignore: cast_nullable_to_non_nullable
+      electronicId: freezed == electronicId
+          ? _value.electronicId
+          : electronicId // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       isVerified: freezed == isVerified
           ? _value.isVerified
@@ -227,7 +227,7 @@ abstract class _$$AuthUserImplCopyWith<$Res>
       String? address,
       LatLng? location,
       LatLng? currentLocation,
-      List<String>? electronics,
+      List<String>? electronicId,
       bool? isVerified,
       bool? isOnline,
       bool? inOrder,
@@ -261,7 +261,7 @@ class __$$AuthUserImplCopyWithImpl<$Res>
     Object? address = freezed,
     Object? location = freezed,
     Object? currentLocation = freezed,
-    Object? electronics = freezed,
+    Object? electronicId = freezed,
     Object? isVerified = freezed,
     Object? isOnline = freezed,
     Object? inOrder = freezed,
@@ -314,9 +314,9 @@ class __$$AuthUserImplCopyWithImpl<$Res>
           ? _value.currentLocation
           : currentLocation // ignore: cast_nullable_to_non_nullable
               as LatLng?,
-      electronics: freezed == electronics
-          ? _value.electronics
-          : electronics // ignore: cast_nullable_to_non_nullable
+      electronicId: freezed == electronicId
+          ? _value.electronicId
+          : electronicId // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       isVerified: freezed == isVerified
           ? _value.isVerified
@@ -361,7 +361,7 @@ class _$AuthUserImpl extends _AuthUser {
       this.address,
       this.location,
       this.currentLocation,
-      this.electronics,
+      this.electronicId,
       this.isVerified,
       this.isOnline,
       this.inOrder,
@@ -393,7 +393,7 @@ class _$AuthUserImpl extends _AuthUser {
   @override
   LatLng? currentLocation;
   @override
-  List<String>? electronics;
+  List<String>? electronicId;
   @override
   bool? isVerified;
   @override
@@ -409,7 +409,7 @@ class _$AuthUserImpl extends _AuthUser {
 
   @override
   String toString() {
-    return 'AuthUser(uid: $uid, name: $name, email: $email, isRegistered: $isRegistered, phoneNumber: $phoneNumber, description: $description, profilePicture: $profilePicture, images: $images, address: $address, location: $location, currentLocation: $currentLocation, electronics: $electronics, isVerified: $isVerified, isOnline: $isOnline, inOrder: $inOrder, rating: $rating, numberOfReviews: $numberOfReviews, direction: $direction)';
+    return 'AuthUser(uid: $uid, name: $name, email: $email, isRegistered: $isRegistered, phoneNumber: $phoneNumber, description: $description, profilePicture: $profilePicture, images: $images, address: $address, location: $location, currentLocation: $currentLocation, electronicId: $electronicId, isVerified: $isVerified, isOnline: $isOnline, inOrder: $inOrder, rating: $rating, numberOfReviews: $numberOfReviews, direction: $direction)';
   }
 
   @JsonKey(ignore: true)
@@ -432,7 +432,7 @@ abstract class _AuthUser extends AuthUser {
       String? address,
       LatLng? location,
       LatLng? currentLocation,
-      List<String>? electronics,
+      List<String>? electronicId,
       bool? isVerified,
       bool? isOnline,
       bool? inOrder,
@@ -475,8 +475,8 @@ abstract class _AuthUser extends AuthUser {
   LatLng? get currentLocation;
   set currentLocation(LatLng? value);
   @override
-  List<String>? get electronics;
-  set electronics(List<String>? value);
+  List<String>? get electronicId;
+  set electronicId(List<String>? value);
   @override
   bool? get isVerified;
   set isVerified(bool? value);

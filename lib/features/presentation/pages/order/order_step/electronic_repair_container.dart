@@ -57,14 +57,14 @@ class ElectronicRepairContainer extends StatelessWidget {
 
     return Column(
       children: [
-        Text('Perbaikan Elektronik'),
+        const Text('Perbaikan Elektronik'),
         FilledButton(
           onPressed: done,
           style: FilledButton.styleFrom(
             foregroundColor: Palette.background,
             minimumSize: Size(428.w, 40.w),
           ),
-          child: Text('Electronik selesai diperbaiki'),
+          child: const Text('Electronik selesai diperbaiki'),
         ),
       ],
     );

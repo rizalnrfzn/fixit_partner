@@ -43,7 +43,7 @@ class _OrderDetailPageState extends State<OrderDetailPage>
         builder: (_, state) {
           return state.maybeWhen(
             orElse: () => const Center(child: Loading()),
-            stream: (orders) {
+            success: (orders) {
               final repairOrder =
                   orders.firstWhere((element) => element.id == widget.orderId);
               context.read<OrderDetailCubit>().checkStatus(
@@ -63,6 +63,7 @@ class _OrderDetailPageState extends State<OrderDetailPage>
                       labelPadding: const EdgeInsets.all(0),
                       indicatorWeight: 3,
                       unselectedLabelColor: Theme.of(context).hintColor,
+                      dividerColor: Colors.transparent,
                     ),
                     Expanded(
                       child: TabBarView(

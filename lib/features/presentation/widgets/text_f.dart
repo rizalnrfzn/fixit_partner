@@ -129,7 +129,8 @@ class _TextFState extends State<TextF> {
                     gapPadding: 0,
                     borderRadius: BorderRadius.circular(Dimens.space12),
                     borderSide: BorderSide(
-                      color: Theme.of(context).extension<MyAppColors>()!.card!,
+                      color:
+                          Theme.of(context).extension<MyAppColors>()!.shadow!,
                     ),
                   ),
                   disabledBorder: OutlineInputBorder(

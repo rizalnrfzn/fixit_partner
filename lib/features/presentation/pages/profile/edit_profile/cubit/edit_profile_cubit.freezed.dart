@@ -19,38 +19,38 @@ mixin _$EditProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(File picture) profilePicture,
+    required TResult Function() success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(File picture)? profilePicture,
+    TResult? Function()? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(File picture)? profilePicture,
+    TResult Function()? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_ProfilePicture value) profilePicture,
+    required TResult Function(_Success value) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_ProfilePicture value)? profilePicture,
+    TResult? Function(_Success value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_ProfilePicture value)? profilePicture,
+    TResult Function(_Success value)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(File picture) profilePicture,
+    required TResult Function() success,
   }) {
     return initial();
   }
@@ -122,7 +122,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(File picture)? profilePicture,
+    TResult? Function()? success,
   }) {
     return initial?.call();
   }
@@ -131,7 +131,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(File picture)? profilePicture,
+    TResult Function()? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -144,7 +144,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_ProfilePicture value) profilePicture,
+    required TResult Function(_Success value) success,
   }) {
     return initial(this);
   }
@@ -153,7 +153,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_ProfilePicture value)? profilePicture,
+    TResult? Function(_Success value)? success,
   }) {
     return initial?.call(this);
   }
@@ -162,7 +162,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_ProfilePicture value)? profilePicture,
+    TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -177,94 +177,67 @@ abstract class _Initial implements EditProfileState {
 }
 
 /// @nodoc
-abstract class _$$ProfilePictureImplCopyWith<$Res> {
-  factory _$$ProfilePictureImplCopyWith(_$ProfilePictureImpl value,
-          $Res Function(_$ProfilePictureImpl) then) =
-      __$$ProfilePictureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({File picture});
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ProfilePictureImplCopyWithImpl<$Res>
-    extends _$EditProfileStateCopyWithImpl<$Res, _$ProfilePictureImpl>
-    implements _$$ProfilePictureImplCopyWith<$Res> {
-  __$$ProfilePictureImplCopyWithImpl(
-      _$ProfilePictureImpl _value, $Res Function(_$ProfilePictureImpl) _then)
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$EditProfileStateCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? picture = null,
-  }) {
-    return _then(_$ProfilePictureImpl(
-      null == picture
-          ? _value.picture
-          : picture // ignore: cast_nullable_to_non_nullable
-              as File,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$ProfilePictureImpl implements _ProfilePicture {
-  const _$ProfilePictureImpl(this.picture);
-
-  @override
-  final File picture;
+class _$SuccessImpl implements _Success {
+  const _$SuccessImpl();
 
   @override
   String toString() {
-    return 'EditProfileState.profilePicture(picture: $picture)';
+    return 'EditProfileState.success()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ProfilePictureImpl &&
-            (identical(other.picture, picture) || other.picture == picture));
+        (other.runtimeType == runtimeType && other is _$SuccessImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, picture);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ProfilePictureImplCopyWith<_$ProfilePictureImpl> get copyWith =>
-      __$$ProfilePictureImplCopyWithImpl<_$ProfilePictureImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(File picture) profilePicture,
+    required TResult Function() success,
   }) {
-    return profilePicture(picture);
+    return success();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(File picture)? profilePicture,
+    TResult? Function()? success,
   }) {
-    return profilePicture?.call(picture);
+    return success?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(File picture)? profilePicture,
+    TResult Function()? success,
     required TResult orElse(),
   }) {
-    if (profilePicture != null) {
-      return profilePicture(picture);
+    if (success != null) {
+      return success();
     }
     return orElse();
   }
@@ -273,39 +246,34 @@ class _$ProfilePictureImpl implements _ProfilePicture {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_ProfilePicture value) profilePicture,
+    required TResult Function(_Success value) success,
   }) {
-    return profilePicture(this);
+    return success(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_ProfilePicture value)? profilePicture,
+    TResult? Function(_Success value)? success,
   }) {
-    return profilePicture?.call(this);
+    return success?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_ProfilePicture value)? profilePicture,
+    TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
-    if (profilePicture != null) {
-      return profilePicture(this);
+    if (success != null) {
+      return success(this);
     }
     return orElse();
   }
 }
 
-abstract class _ProfilePicture implements EditProfileState {
-  const factory _ProfilePicture(final File picture) = _$ProfilePictureImpl;
-
-  File get picture;
-  @JsonKey(ignore: true)
-  _$$ProfilePictureImplCopyWith<_$ProfilePictureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _Success implements EditProfileState {
+  const factory _Success() = _$SuccessImpl;
 }

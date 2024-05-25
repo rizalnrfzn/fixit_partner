@@ -13,8 +13,8 @@ class CancelledTab extends StatelessWidget {
           orElse: () => const Center(
             child: Loading(),
           ),
-          stream: (orders) {
-            return orders.where((element) => element.canceled == true).isEmpty
+          success: (orders) {
+            return orders.where((element) => element.cancelled == true).isEmpty
                 ? const Center(
                     child: Text('Tidak ada order'),
                   )
@@ -23,11 +23,11 @@ class CancelledTab extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: List.generate(
                         orders
-                            .where((element) => element.canceled == true)
+                            .where((element) => element.cancelled == true)
                             .length,
                         (index) => OrderCanceledListTile(
                           repairOrder: orders
-                              .where((element) => element.canceled == true)
+                              .where((element) => element.cancelled == true)
                               .toList()[index],
                         ),
                       ),

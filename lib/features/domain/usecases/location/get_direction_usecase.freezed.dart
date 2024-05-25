@@ -21,11 +21,9 @@ DirectionParams _$DirectionParamsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$DirectionParams {
   LatLng? get location => throw _privateConstructorUsedError;
-
   LatLng? get destinationLocation => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $DirectionParamsCopyWith<DirectionParams> get copyWith =>
       throw _privateConstructorUsedError;
@@ -36,7 +34,6 @@ abstract class $DirectionParamsCopyWith<$Res> {
   factory $DirectionParamsCopyWith(
           DirectionParams value, $Res Function(DirectionParams) then) =
       _$DirectionParamsCopyWithImpl<$Res, DirectionParams>;
-
   @useResult
   $Res call({LatLng? location, LatLng? destinationLocation});
 }
@@ -48,7 +45,6 @@ class _$DirectionParamsCopyWithImpl<$Res, $Val extends DirectionParams>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -77,7 +73,6 @@ abstract class _$$DirectionParamsImplCopyWith<$Res>
   factory _$$DirectionParamsImplCopyWith(_$DirectionParamsImpl value,
           $Res Function(_$DirectionParamsImpl) then) =
       __$$DirectionParamsImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({LatLng? location, LatLng? destinationLocation});
@@ -168,10 +163,8 @@ abstract class _DirectionParams implements DirectionParams {
 
   @override
   LatLng? get location;
-
   @override
   LatLng? get destinationLocation;
-
   @override
   @JsonKey(ignore: true)
   _$$DirectionParamsImplCopyWith<_$DirectionParamsImpl> get copyWith =>

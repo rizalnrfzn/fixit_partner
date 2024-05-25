@@ -114,6 +114,7 @@ void _useCase() {
   sl.registerLazySingleton(() => GetLocationUsecase(sl()));
   sl.registerLazySingleton(() => ChangeLocationUsecase(sl()));
   sl.registerLazySingleton(() => StreamLocation(sl()));
+  sl.registerLazySingleton(() => UpdateLocationUsecse(sl()));
 
   // chat
   sl.registerLazySingleton(() => StreamChatUsecase(sl()));
@@ -129,7 +130,7 @@ void _cubit() {
   sl.registerFactory(() => ElectronicCubit(sl()));
   sl.registerFactory(
       () => OrderCubit(sl(), sl(), sl(), sl(), sl(), sl(), sl()));
-  sl.registerFactory(() => LocationCubit(sl(), sl(), sl(), sl()));
+  sl.registerFactory(() => LocationCubit(sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => ChatCubit(sl(), sl(), sl(), sl()));
   sl.registerFactory(() => ClientCubit(sl()));
 

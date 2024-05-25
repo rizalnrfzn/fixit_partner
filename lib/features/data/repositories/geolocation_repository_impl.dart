@@ -47,4 +47,15 @@ class GeolocationRepositoryImpl implements GeolocationRepository {
       yield* Stream.error(e);
     }
   }
+
+  @override
+  Future<Either<Failure, LatLng>> updateLocation(
+      UpdateLocationParams params) async {
+    final response = await _datasource.updateLocation(params);
+
+    return response.fold(
+      (l) => Left(l),
+      (r) => Right(r),
+    );
+  }
 }

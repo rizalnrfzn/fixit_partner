@@ -9,5 +9,7 @@ abstract class GeolocationRepository {
   Future<Either<Failure, Geolocation>> changeLocation(
       ChangeLocationParams params);
 
+  Future<Either<Failure, LatLng>> updateLocation(UpdateLocationParams params);
+
   Stream<LatLng> streamLocation();
 }

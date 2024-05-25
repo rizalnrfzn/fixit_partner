@@ -80,23 +80,12 @@ class OrderDoneListTile extends StatelessWidget {
                         BlocBuilder<ElectronicCubit, ElectronicState>(
                           builder: (context, state) {
                             return Text(
-                              (MainBoxMixin.mainBox
-                                                  ?.get(MainBoxKeys.locale.name)
-                                              as String? ??
-                                          'en') ==
-                                      'en'
-                                  ? context
-                                      .read<ElectronicCubit>()
-                                      .electronics
-                                      .firstWhere((element) =>
-                                          element.id == repairOrder.electronic)
-                                      .englishName!
-                                  : context
-                                      .read<ElectronicCubit>()
-                                      .electronics
-                                      .firstWhere((element) =>
-                                          element.id == repairOrder.electronic)
-                                      .name!,
+                              context
+                                  .read<ElectronicCubit>()
+                                  .electronics
+                                  .firstWhere((element) =>
+                                      element.id == repairOrder.electronicId)
+                                  .name!,
                               maxLines: 2,
                               style: Theme.of(context).textTheme.bodyMedium,
                             );
@@ -114,7 +103,13 @@ class OrderDoneListTile extends StatelessWidget {
                               vertical: Dimens.space4,
                             ),
                             child: Text(
-                              repairOrder.status!,
+                              (MainBoxMixin.mainBox
+                                                  ?.get(MainBoxKeys.locale.name)
+                                              as String? ??
+                                          'id') ==
+                                      'en'
+                                  ? getStatus(repairOrder.status!).englishText
+                                  : getStatus(repairOrder.status!).text,
                               style: textTheme.bodyMedium!
                                   .copyWith(color: Colors.white),
                             ),

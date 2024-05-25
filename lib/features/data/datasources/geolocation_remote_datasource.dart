@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fixit_partner/core/core.dart';
 import 'package:fixit_partner/features/features.dart';
 import 'package:geocoding/geocoding.dart';
@@ -11,10 +13,18 @@ abstract class GeolocationRemoteDatasource {
   Future<Either<Failure, GeolocationModel>> changeLocation(
       ChangeLocationParams params);
 
+  Future<Either<Failure, LatLng>> updateLocation(UpdateLocationParams params);
+
   Stream<Position> streamLocation();
 }
 
 class GeolocationRemoteDatasourceImpl implements GeolocationRemoteDatasource {
+  final _collRef = FirebaseFirestore.instance
+      .collection('technician')
+      .withConverter<AuthUserModel>(
+          fromFirestore: AuthUserModel.fromFirestore,
+          toFirestore: AuthUserModel.toFirestore);
+
   @override
   Future<Either<Failure, GeolocationModel>> getLocation() async {
     bool serviceEnabled;
@@ -112,11 +122,28 @@ class GeolocationRemoteDatasourceImpl implements GeolocationRemoteDatasource {
       yield* Geolocator.getPositionStream(
         locationSettings: const LocationSettings(
           accuracy: LocationAccuracy.bestForNavigation,
-          distanceFilter: 10,
+          distanceFilter: 5,
         ),
       );
     } catch (e) {
       yield* Stream.error(e);
+    }
+  }
+
+  @override
+  Future<Either<Failure, LatLng>> updateLocation(
+      UpdateLocationParams params) async {
+    try {
+      final userUid = FirebaseAuth.instance.currentUser!.uid;
+
+      await _collRef.doc(userUid).update({
+        'currentLocation':
+            GeoPoint(params.latLng.latitude, params.latLng.longitude)
+      });
+
+      return Right(params.latLng);
+    } on FirebaseException catch (e) {
+      return Left(FirestoreFailure(e.code));
     }
   }
 }

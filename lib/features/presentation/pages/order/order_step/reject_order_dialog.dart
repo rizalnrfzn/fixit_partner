@@ -34,7 +34,7 @@ class _RejectOrderDialogState extends State<RejectOrderDialog> {
               )
             ]),
             SpacerV(value: Dimens.space16),
-            Text('Masukkan alasan Anda menolak pesanan ini'),
+            const Text('Masukkan alasan Anda menolak pesanan ini'),
             TextF(
               controller: connReason,
               maxLine: null,

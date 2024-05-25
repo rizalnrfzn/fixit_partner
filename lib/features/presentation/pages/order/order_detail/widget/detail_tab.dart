@@ -33,8 +33,16 @@ class DetailTab extends StatelessWidget {
                   .firstWhere(
                       (element) => element.clientUid == repairOrder.clientUid)
                   .id,
-              'client': context.read<ClientCubit>().clients.firstWhere(
-                  (element) => element.uid == repairOrder.clientUid),
+              'clientName': context
+                  .read<ClientCubit>()
+                  .clients
+                  .firstWhere((element) => element.uid == repairOrder.clientUid)
+                  .name,
+              'clientPicture': context
+                  .read<ClientCubit>()
+                  .clients
+                  .firstWhere((element) => element.uid == repairOrder.clientUid)
+                  .profilePicture,
             },
           );
         },
@@ -69,8 +77,8 @@ class DetailTab extends StatelessWidget {
                         .read<ElectronicCubit>()
                         .electronics
                         .firstWhere(
-                            (element) => element.id == repairOrder.electronic)
-                        .englishName!,
+                            (element) => element.id == repairOrder.electronicId)
+                        .name!,
                   ),
                   RowText(
                     left: Strings.of(context)!.client,

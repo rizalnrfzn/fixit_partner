@@ -17,7 +17,7 @@ class OrderCubit extends Cubit<OrderState> {
     this._checkingElectronic,
     this._electronicRepair,
     this._paymentConfirmation,
-  ) : super(const OrderState.initial());
+  ) : super(const _Loading());
 
   final StreamRepairOrdersUsecase _streamOrders;
   final AcceptOrderUsecase _acceptOrder;
@@ -33,14 +33,12 @@ class OrderCubit extends Cubit<OrderState> {
   void streamOrders(String uid) async {
     orders = [];
     _ordersSubscription?.cancel();
-    _ordersSubscription = _streamOrders.call(uid).listen((event) {
-      orders = event;
-      orders.sort(
-        (a, b) => a.dateTime!.compareTo(b.dateTime!),
-      );
-
-      emit(_Stream(orders));
-    });
+    _ordersSubscription = _streamOrders.call(uid).listen(
+      (event) {
+        orders = event;
+        emit(_Success(orders));
+      },
+    );
   }
 
   Future<void> acceptOrder(RepairOrder params) async {

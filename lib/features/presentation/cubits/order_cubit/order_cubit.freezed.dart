@@ -18,57 +18,45 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OrderState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
     required TResult Function(List<RepairOrder> orders) success,
-    required TResult Function(List<RepairOrder> orders) stream,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
     TResult? Function(List<RepairOrder> orders)? success,
-    TResult? Function(List<RepairOrder> orders)? stream,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
     TResult Function(List<RepairOrder> orders)? success,
-    TResult Function(List<RepairOrder> orders)? stream,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Failure value) failure,
     required TResult Function(_Success value) success,
-    required TResult Function(_Stream value) stream,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Stream value)? stream,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Failure value)? failure,
     TResult Function(_Success value)? success,
-    TResult Function(_Stream value)? stream,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -90,126 +78,6 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
-
-  @override
-  String toString() {
-    return 'OrderState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) failure,
-    required TResult Function(List<RepairOrder> orders) success,
-    required TResult Function(List<RepairOrder> orders) stream,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? failure,
-    TResult? Function(List<RepairOrder> orders)? success,
-    TResult? Function(List<RepairOrder> orders)? stream,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? failure,
-    TResult Function(List<RepairOrder> orders)? success,
-    TResult Function(List<RepairOrder> orders)? stream,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Stream value) stream,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Stream value)? stream,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_Success value)? success,
-    TResult Function(_Stream value)? stream,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements OrderState {
-  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
@@ -250,11 +118,9 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
     required TResult Function(List<RepairOrder> orders) success,
-    required TResult Function(List<RepairOrder> orders) stream,
   }) {
     return loading();
   }
@@ -262,11 +128,9 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
     TResult? Function(List<RepairOrder> orders)? success,
-    TResult? Function(List<RepairOrder> orders)? stream,
   }) {
     return loading?.call();
   }
@@ -274,11 +138,9 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
     TResult Function(List<RepairOrder> orders)? success,
-    TResult Function(List<RepairOrder> orders)? stream,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -290,11 +152,9 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Failure value) failure,
     required TResult Function(_Success value) success,
-    required TResult Function(_Stream value) stream,
   }) {
     return loading(this);
   }
@@ -302,11 +162,9 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Stream value)? stream,
   }) {
     return loading?.call(this);
   }
@@ -314,11 +172,9 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Failure value)? failure,
     TResult Function(_Success value)? success,
-    TResult Function(_Stream value)? stream,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -396,11 +252,9 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
     required TResult Function(List<RepairOrder> orders) success,
-    required TResult Function(List<RepairOrder> orders) stream,
   }) {
     return failure(message);
   }
@@ -408,11 +262,9 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
     TResult? Function(List<RepairOrder> orders)? success,
-    TResult? Function(List<RepairOrder> orders)? stream,
   }) {
     return failure?.call(message);
   }
@@ -420,11 +272,9 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
     TResult Function(List<RepairOrder> orders)? success,
-    TResult Function(List<RepairOrder> orders)? stream,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -436,11 +286,9 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Failure value) failure,
     required TResult Function(_Success value) success,
-    required TResult Function(_Stream value) stream,
   }) {
     return failure(this);
   }
@@ -448,11 +296,9 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Stream value)? stream,
   }) {
     return failure?.call(this);
   }
@@ -460,11 +306,9 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Failure value)? failure,
     TResult Function(_Success value)? success,
-    TResult Function(_Stream value)? stream,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -553,11 +397,9 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
     required TResult Function(List<RepairOrder> orders) success,
-    required TResult Function(List<RepairOrder> orders) stream,
   }) {
     return success(orders);
   }
@@ -565,11 +407,9 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
     TResult? Function(List<RepairOrder> orders)? success,
-    TResult? Function(List<RepairOrder> orders)? stream,
   }) {
     return success?.call(orders);
   }
@@ -577,11 +417,9 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
     TResult Function(List<RepairOrder> orders)? success,
-    TResult Function(List<RepairOrder> orders)? stream,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -593,11 +431,9 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Failure value) failure,
     required TResult Function(_Success value) success,
-    required TResult Function(_Stream value) stream,
   }) {
     return success(this);
   }
@@ -605,11 +441,9 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_Success value)? success,
-    TResult? Function(_Stream value)? stream,
   }) {
     return success?.call(this);
   }
@@ -617,11 +451,9 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Failure value)? failure,
     TResult Function(_Success value)? success,
-    TResult Function(_Stream value)? stream,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -637,162 +469,5 @@ abstract class _Success implements OrderState {
   List<RepairOrder> get orders;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$StreamImplCopyWith<$Res> {
-  factory _$$StreamImplCopyWith(
-          _$StreamImpl value, $Res Function(_$StreamImpl) then) =
-      __$$StreamImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<RepairOrder> orders});
-}
-
-/// @nodoc
-class __$$StreamImplCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$StreamImpl>
-    implements _$$StreamImplCopyWith<$Res> {
-  __$$StreamImplCopyWithImpl(
-      _$StreamImpl _value, $Res Function(_$StreamImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? orders = null,
-  }) {
-    return _then(_$StreamImpl(
-      null == orders
-          ? _value._orders
-          : orders // ignore: cast_nullable_to_non_nullable
-              as List<RepairOrder>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$StreamImpl implements _Stream {
-  const _$StreamImpl(final List<RepairOrder> orders) : _orders = orders;
-
-  final List<RepairOrder> _orders;
-  @override
-  List<RepairOrder> get orders {
-    if (_orders is EqualUnmodifiableListView) return _orders;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_orders);
-  }
-
-  @override
-  String toString() {
-    return 'OrderState.stream(orders: $orders)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$StreamImpl &&
-            const DeepCollectionEquality().equals(other._orders, _orders));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_orders));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StreamImplCopyWith<_$StreamImpl> get copyWith =>
-      __$$StreamImplCopyWithImpl<_$StreamImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) failure,
-    required TResult Function(List<RepairOrder> orders) success,
-    required TResult Function(List<RepairOrder> orders) stream,
-  }) {
-    return stream(orders);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? failure,
-    TResult? Function(List<RepairOrder> orders)? success,
-    TResult? Function(List<RepairOrder> orders)? stream,
-  }) {
-    return stream?.call(orders);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? failure,
-    TResult Function(List<RepairOrder> orders)? success,
-    TResult Function(List<RepairOrder> orders)? stream,
-    required TResult orElse(),
-  }) {
-    if (stream != null) {
-      return stream(orders);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Stream value) stream,
-  }) {
-    return stream(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Stream value)? stream,
-  }) {
-    return stream?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_Success value)? success,
-    TResult Function(_Stream value)? stream,
-    required TResult orElse(),
-  }) {
-    if (stream != null) {
-      return stream(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Stream implements OrderState {
-  const factory _Stream(final List<RepairOrder> orders) = _$StreamImpl;
-
-  List<RepairOrder> get orders;
-  @JsonKey(ignore: true)
-  _$$StreamImplCopyWith<_$StreamImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

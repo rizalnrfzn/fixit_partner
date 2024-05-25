@@ -19,10 +19,11 @@ class DoneTab extends StatelessWidget {
           orElse: () => const Center(
             child: Loading(),
           ),
-          stream: (orders) {
+          success: (orders) {
             return orders
-                    .where(
-                        (element) => (filterOnProgres.contains(element.status)))
+                    .where((element) =>
+                        (filterOnProgres.contains(element.status) &&
+                            element.cancelled != true))
                     .isEmpty
                 ? const Center(
                     child: Text('Tidak ada order'),
@@ -33,12 +34,14 @@ class DoneTab extends StatelessWidget {
                       children: List.generate(
                         orders
                             .where((element) =>
-                                (filterOnProgres.contains(element.status)))
+                                (filterOnProgres.contains(element.status) &&
+                                    element.cancelled != true))
                             .length,
                         (index) => OrderDoneListTile(
                           repairOrder: orders
                               .where((element) =>
-                                  (filterOnProgres.contains(element.status)))
+                                  (filterOnProgres.contains(element.status) &&
+                                      element.cancelled != true))
                               .toList()[index],
                         ),
                       ),

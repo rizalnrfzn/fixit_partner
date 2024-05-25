@@ -73,38 +73,40 @@ class _ProgresTabState extends State<ProgresTab> {
                           direction:
                               context.read<OrderDetailCubit>().direction!,
                           mapHeight: 450.h,
+                          showMap: true,
                         ),
                 ),
                 Step(
                   isActive: widget.index >= 2 ? true : false,
                   title: const Text('Pengecekan Elektronik'),
                   content: const Text(
-                      'Teknisi akan melakukan pengecekan elektronik'),
+                      'Teknisi akan melakukan pengecekan elektronik.'),
                 ),
                 Step(
                   isActive: widget.index >= 3 ? true : false,
                   title: const Text('Konfirmasi Perbaikan'),
-                  content: const Text('Menunggu teknisi'),
+                  content: const Text(
+                      'Menunggu konfirmasi perbaikan dari pelanggan.'),
                 ),
                 Step(
                   isActive: widget.index >= 4 ? true : false,
                   title: const Text('Perbaikan Elektronik'),
-                  content: const Text('Menunggu teknisi'),
+                  content: const Text('Perbaikan elektronik'),
                 ),
                 Step(
                   isActive: widget.index >= 5 ? true : false,
                   title: const Text('Pembayaran'),
-                  content: const Text('Menunggu teknisi'),
+                  content: const Text('Menunggu pembayaran dari pelanggan'),
                 ),
                 Step(
                   isActive: widget.index >= 6 ? true : false,
                   title: const Text('Beri Ulasan'),
-                  content: const Text('Menunggu teknisi'),
+                  content: const Text('beri ulasan'),
                 ),
                 Step(
                   isActive: widget.index >= 7 ? true : false,
                   title: const Text('Pesanan Selesai'),
-                  content: const Text('Menunggu teknisi'),
+                  content: const Text('Pesanan telah selesai'),
                 ),
               ],
             );

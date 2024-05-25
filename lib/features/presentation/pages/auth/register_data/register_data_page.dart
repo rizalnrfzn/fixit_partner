@@ -664,7 +664,7 @@ class _RegisterDataPageState extends State<RegisterDataPage> {
                                         phoneNumber: _conNumberPhone.text,
                                         description: _conDescription.text,
                                         address: _conAddress.text,
-                                        electronics: selectedElectronics,
+                                        electronicId: selectedElectronics,
                                         location: context
                                             .read<LocationCubit>()
                                             .geolocation!
@@ -728,7 +728,7 @@ class _RegisterDataPageState extends State<RegisterDataPage> {
                                         phoneNumber: _conNumberPhone.text,
                                         description: _conDescription.text,
                                         address: _conAddress.text,
-                                        electronics: selectedElectronics,
+                                        electronicId: selectedElectronics,
                                         location: context
                                             .read<LocationCubit>()
                                             .geolocation!

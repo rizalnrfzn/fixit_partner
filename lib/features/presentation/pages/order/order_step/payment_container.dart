@@ -60,18 +60,18 @@ class PaymentContainer extends StatelessWidget {
         return Column(
           children: repairOrder.pay ?? false
               ? [
-                  Text('konfirmasi pembayaran'),
+                  const Text('konfirmasi pembayaran'),
                   FilledButton(
                     onPressed: done,
                     style: FilledButton.styleFrom(
                       foregroundColor: Palette.background,
                       minimumSize: Size(428.w, 40.w),
                     ),
-                    child: Text('Pembayaran sudah masuk'),
+                    child: const Text('Pembayaran sudah masuk'),
                   ),
                 ]
               : [
-                  Text('Menunggu pembayaran'),
+                  const Text('Menunggu pembayaran'),
                 ],
         );
       },
