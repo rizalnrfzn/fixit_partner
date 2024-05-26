@@ -195,44 +195,60 @@ class DashboardPage extends StatelessWidget {
                                                   const Icon(Icons.my_location),
                                             ),
                                           ),
-                                          Row(
-                                            children: [
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  color: colorTheme.card,
-                                                  borderRadius:
-                                                      BorderRadius.horizontal(
-                                                    left: Radius.circular(20.r),
-                                                  ),
-                                                ),
-                                                padding: EdgeInsets.all(10.w),
-                                                child: context
-                                                        .read<AuthCubit>()
-                                                        .authUser!
-                                                        .isOnline!
-                                                    ? const Text('Online')
-                                                    : const Text('Offline'),
+                                          Container(
+                                            padding: EdgeInsets.all(10.w),
+                                            decoration: BoxDecoration(
+                                              color: colorTheme.card,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                20.r,
                                               ),
-                                              SpacerH(value: Dimens.space4),
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  color: colorTheme.card,
-                                                  borderRadius:
-                                                      BorderRadius.horizontal(
-                                                    right:
-                                                        Radius.circular(20.r),
-                                                  ),
-                                                ),
-                                                padding: EdgeInsets.all(10.w),
-                                                child: context
-                                                        .read<AuthCubit>()
-                                                        .authUser!
-                                                        .isOnline!
-                                                    ? const Text('Online')
-                                                    : const Text('Offline'),
-                                              ),
-                                            ],
+                                            ),
+                                            child: context
+                                                    .read<AuthCubit>()
+                                                    .authUser!
+                                                    .isOnline!
+                                                ? const Text('Online')
+                                                : const Text('Offline'),
                                           ),
+                                          // Row(
+                                          //   children: [
+                                          //     Container(
+                                          //       decoration: BoxDecoration(
+                                          //         color: colorTheme.card,
+                                          //         borderRadius:
+                                          //             BorderRadius.horizontal(
+                                          //           left: Radius.circular(20.r),
+                                          //         ),
+                                          //       ),
+                                          //       padding: EdgeInsets.all(10.w),
+                                          //       child: context
+                                          //               .read<AuthCubit>()
+                                          //               .authUser!
+                                          //               .isOnline!
+                                          //           ? const Text('Online')
+                                          //           : const Text('Offline'),
+                                          //     ),
+                                          //     SpacerH(value: Dimens.space4),
+                                          //     Container(
+                                          //       decoration: BoxDecoration(
+                                          //         color: colorTheme.card,
+                                          //         borderRadius:
+                                          //             BorderRadius.horizontal(
+                                          //           right:
+                                          //               Radius.circular(20.r),
+                                          //         ),
+                                          //       ),
+                                          //       padding: EdgeInsets.all(10.w),
+                                          //       child: context
+                                          //               .read<AuthCubit>()
+                                          //               .authUser!
+                                          //               .isOnline!
+                                          //           ? const Text('Online')
+                                          //           : const Text('Offline'),
+                                          //     ),
+                                          //   ],
+                                          // ),
                                           InkWell(
                                             onTap: () {
                                               if (context

@@ -79,8 +79,7 @@ class _ProgresTabState extends State<ProgresTab> {
                 Step(
                   isActive: widget.index >= 2 ? true : false,
                   title: const Text('Pengecekan Elektronik'),
-                  content: const Text(
-                      'Teknisi akan melakukan pengecekan elektronik.'),
+                  content: CheckingContainer(repairOrder: widget.repairOrder),
                 ),
                 Step(
                   isActive: widget.index >= 3 ? true : false,
@@ -91,17 +90,19 @@ class _ProgresTabState extends State<ProgresTab> {
                 Step(
                   isActive: widget.index >= 4 ? true : false,
                   title: const Text('Perbaikan Elektronik'),
-                  content: const Text('Perbaikan elektronik'),
+                  content: ElectronicRepairContainer(
+                      repairOrder: widget.repairOrder),
                 ),
                 Step(
                   isActive: widget.index >= 5 ? true : false,
                   title: const Text('Pembayaran'),
-                  content: const Text('Menunggu pembayaran dari pelanggan'),
+                  content: PaymentContainer(repairOrder: widget.repairOrder),
                 ),
                 Step(
                   isActive: widget.index >= 6 ? true : false,
                   title: const Text('Beri Ulasan'),
-                  content: const Text('beri ulasan'),
+                  content:
+                      const Text('Pemberian ulasan dan rating oleh pelanggan'),
                 ),
                 Step(
                   isActive: widget.index >= 7 ? true : false,

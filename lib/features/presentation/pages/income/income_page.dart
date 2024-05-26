@@ -137,6 +137,7 @@ class _IncomePageState extends State<IncomePage>
                             indicatorSize: TabBarIndicatorSize.tab,
                             indicatorWeight: 3,
                             physics: const NeverScrollableScrollPhysics(),
+                            dividerColor: Colors.transparent,
                           ),
                           Expanded(
                             child: TabBarView(
@@ -155,14 +156,14 @@ class _IncomePageState extends State<IncomePage>
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8, top: 24),
-                child: Text(
-                  'Riwayat pendapatan',
-                  style: textTheme.titleMedium!
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(bottom: 8, top: 24),
+              //   child: Text(
+              //     'Riwayat pendapatan',
+              //     style: textTheme.titleMedium!
+              //         .copyWith(fontWeight: FontWeight.bold),
+              //   ),
+              // ),
             ],
           ),
         ),
