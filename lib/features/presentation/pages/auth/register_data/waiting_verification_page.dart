@@ -3,6 +3,7 @@ import 'package:fixit_partner/features/features.dart';
 import 'package:fixit_partner/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class WaitingVerificationPage extends StatelessWidget {
@@ -69,13 +70,25 @@ class WaitingVerificationPage extends StatelessWidget {
           );
         },
         child: SafeArea(
-          child: Center(
-            child: BlocBuilder<AuthCubit, AuthState>(
-              builder: (context, state) {
-                return Text(
-                    'Menunggu verifikasi ${context.read<AuthCubit>().authUser!.isVerified}');
-              },
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(Images.icLogo,
+                  width: 350.w,
+                  color: Theme.of(context).extension<MyAppColors>()!.blue),
+              Text(
+                'Akun Anda sedang diverifikasi',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              SpacerV(value: 20.w),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Silahkan tunggu 1x24 jam untuk verifikasi akun'),
+                ],
+              ),
+            ],
           ),
         ),
       ),

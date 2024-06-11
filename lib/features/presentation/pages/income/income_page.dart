@@ -99,7 +99,8 @@ class _IncomePageState extends State<IncomePage>
                           .orders
                           .where(
                             (element) =>
-                                element.status == 'pesananSelesai' &&
+                                (element.status == 'pesananSelesai' ||
+                                    element.status == 'beriUlasan') &&
                                 DateTime(
                                   element.dateTime!.year,
                                   element.dateTime!.month,
@@ -114,7 +115,8 @@ class _IncomePageState extends State<IncomePage>
                           .read<OrderCubit>()
                           .orders
                           .where((element) =>
-                              element.status == 'pesananSelesai' &&
+                              (element.status == 'pesananSelesai' ||
+                                  element.status == 'beriUlasan') &&
                               (element.dateTime!.isAfter(monday) &&
                                   element.dateTime!.isBefore(sunday)))
                           .toList();
@@ -123,7 +125,8 @@ class _IncomePageState extends State<IncomePage>
                           .read<OrderCubit>()
                           .orders
                           .where((element) =>
-                              element.status == 'pesananSelesai' &&
+                              (element.status == 'pesananSelesai' ||
+                                  element.status == 'beriUlasan') &&
                               element.dateTime!.month == now.month)
                           .toList();
 

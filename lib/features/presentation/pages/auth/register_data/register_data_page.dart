@@ -412,7 +412,7 @@ class _RegisterDataPageState extends State<RegisterDataPage> {
                   ),
                 ),
                 Step(
-                  title: const Text('berkas'),
+                  title: const Text('Berkas'),
                   isActive: context.read<RegisterDataCubit>().index >= 2,
                   content: Column(
                     children: [
@@ -478,13 +478,9 @@ class _RegisterDataPageState extends State<RegisterDataPage> {
                             child: Row(
                               children: [
                                 Text(
-                                  Strings.of(context)!.photoOfElectronicDamage,
+                                  'Foto terkait usaha servis elektronik Anda',
                                   style: textTheme.bodyLarge!
                                       .copyWith(fontWeight: FontWeight.w600),
-                                ),
-                                Text(
-                                  Strings.of(context)!.optional,
-                                  style: textTheme.bodySmall,
                                 ),
                                 const Expanded(child: SizedBox()),
                                 IconButton(

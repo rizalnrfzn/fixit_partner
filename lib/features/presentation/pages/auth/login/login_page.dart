@@ -16,8 +16,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   /// Controller
-  final _conEmail = TextEditingController(text: 'levelsijiteruskoh@gmail.com');
-  final _conPassword = TextEditingController(text: 'coba123');
+  final _conEmail = TextEditingController();
+  final _conPassword = TextEditingController();
 
   /// Focus Node
   final _fnEmail = FocusNode();
