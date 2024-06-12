@@ -1,5 +1,9 @@
 import 'package:fixit_partner/core/core.dart';
+import 'package:fixit_partner/features/data/repositories/review_repository_impl.dart';
+import 'package:fixit_partner/features/domain/repositories/review_repository.dart';
+import 'package:fixit_partner/features/domain/usecases/stream_review_usecase.dart';
 import 'package:fixit_partner/features/features.dart';
+import 'package:fixit_partner/features/presentation/pages/profile/review/cubit/review_cubit.dart';
 import 'package:fixit_partner/utils/utils.dart';
 import 'package:get_it/get_it.dart';
 
@@ -55,6 +59,8 @@ void _repositories() {
   sl.registerLazySingleton<ClientRepository>(() => ClientRepositoryImpl(sl()));
 
   sl.registerLazySingleton<ChatRepository>(() => ChatRepositoryImpl(sl()));
+
+  sl.registerLazySingleton<ReviewRepository>(() => ReviewRepositoryImpl(sl()));
 }
 
 /// Register dataSources
@@ -79,6 +85,9 @@ void _dataSources() {
 
   sl.registerLazySingleton<ChatRemoteDatasource>(
       () => ChatRemoteDatasourceImpl());
+
+  sl.registerLazySingleton<ReviewRemoteDatasource>(
+      () => ReviewRemoteDatasourceImpl());
 }
 
 void _useCase() {
@@ -92,6 +101,7 @@ void _useCase() {
 
   /// technician
   sl.registerLazySingleton(() => GetDirectionUsecase(sl()));
+  sl.registerLazySingleton(() => StreamReviewUsecase(sl()));
 
   // order
   sl.registerLazySingleton(() => StreamRepairOrdersUsecase(sl()));
@@ -140,6 +150,7 @@ void _cubit() {
 
   /// profile
   sl.registerFactory(() => EditProfileCubit());
+  sl.registerFactory(() => ReviewCubit(sl(), sl()));
 
   /// Auth pages
   sl.registerFactory(() => LoginCubit());

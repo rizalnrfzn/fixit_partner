@@ -67,6 +67,24 @@ class ProfilePage extends StatelessWidget {
                 ),
                 ListTile(
                   onTap: () {
+                    context.push(Routes.review.path);
+                  },
+                  title: Text(
+                    Strings.of(context)!.review,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(fontWeight: FontWeight.w600),
+                  ),
+                  leading: Icon(
+                    Icons.reviews_outlined,
+                    color:
+                        Theme.of(context).extension<MyAppColors>()!.buttonText,
+                  ),
+                  trailing: const Icon(Icons.keyboard_arrow_right_rounded),
+                ),
+                ListTile(
+                  onTap: () {
                     context.push(Routes.settings.path);
                   },
                   title: Text(

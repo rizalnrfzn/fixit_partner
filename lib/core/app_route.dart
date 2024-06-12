@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:fixit_partner/core/core.dart';
 import 'package:fixit_partner/features/features.dart';
+import 'package:fixit_partner/features/presentation/pages/profile/review/cubit/review_cubit.dart';
+import 'package:fixit_partner/features/presentation/pages/profile/review/review_page.dart';
 import 'package:fixit_partner/utils/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +24,7 @@ enum Routes {
   // profile
   profile('/profile'),
   editProfile('/profile/edit'),
+  review('/profile/review'),
   settings('/settings'),
 
   // Auth Page
@@ -34,7 +37,6 @@ enum Routes {
   // technician
   technicianList('/technician/list'),
   technicianDetail('/technician/detail'),
-  review('/review'),
   makeOrder('/technician/make-order'),
   orderSummary('/technician/make-order/summary'),
 
@@ -231,6 +233,20 @@ class AppRoute {
           return BlocProvider(
             create: (_) => sl<EditProfileCubit>(),
             child: const EditProfilePage(),
+          );
+        },
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigator,
+        path: Routes.review.path,
+        name: Routes.review.name,
+        builder: (_, state) {
+          return BlocProvider(
+            create: (_) => sl<ReviewCubit>()
+              ..streamReview((MainBoxMixin.mainBox
+                      ?.get(MainBoxKeys.authUserId.name) as String?) ??
+                  ''),
+            child: const ReviewPage(),
           );
         },
       ),

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'chat_cubit.dart';
+part of 'review_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,63 +15,64 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ChatState {
+mixin _$ReviewState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ChatList> chatList) success,
     required TResult Function(String message) failure,
+    required TResult Function(List<Review> reviews) reviewStream,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ChatList> chatList)? success,
     TResult? Function(String message)? failure,
+    TResult? Function(List<Review> reviews)? reviewStream,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ChatList> chatList)? success,
     TResult Function(String message)? failure,
+    TResult Function(List<Review> reviews)? reviewStream,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
+    required TResult Function(_ReviewStream value) reviewStream,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
+    TResult? Function(_ReviewStream value)? reviewStream,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
+    TResult Function(_ReviewStream value)? reviewStream,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ChatStateCopyWith<$Res> {
-  factory $ChatStateCopyWith(ChatState value, $Res Function(ChatState) then) =
-      _$ChatStateCopyWithImpl<$Res, ChatState>;
+abstract class $ReviewStateCopyWith<$Res> {
+  factory $ReviewStateCopyWith(
+          ReviewState value, $Res Function(ReviewState) then) =
+      _$ReviewStateCopyWithImpl<$Res, ReviewState>;
 }
 
 /// @nodoc
-class _$ChatStateCopyWithImpl<$Res, $Val extends ChatState>
-    implements $ChatStateCopyWith<$Res> {
-  _$ChatStateCopyWithImpl(this._value, this._then);
+class _$ReviewStateCopyWithImpl<$Res, $Val extends ReviewState>
+    implements $ReviewStateCopyWith<$Res> {
+  _$ReviewStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -88,7 +89,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$ChatStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$ReviewStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -102,7 +103,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'ChatState.loading()';
+    return 'ReviewState.loading()';
   }
 
   @override
@@ -118,8 +119,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ChatList> chatList) success,
     required TResult Function(String message) failure,
+    required TResult Function(List<Review> reviews) reviewStream,
   }) {
     return loading();
   }
@@ -128,8 +129,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ChatList> chatList)? success,
     TResult? Function(String message)? failure,
+    TResult? Function(List<Review> reviews)? reviewStream,
   }) {
     return loading?.call();
   }
@@ -138,8 +139,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ChatList> chatList)? success,
     TResult Function(String message)? failure,
+    TResult Function(List<Review> reviews)? reviewStream,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -152,8 +153,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
+    required TResult Function(_ReviewStream value) reviewStream,
   }) {
     return loading(this);
   }
@@ -162,8 +163,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
+    TResult? Function(_ReviewStream value)? reviewStream,
   }) {
     return loading?.call(this);
   }
@@ -172,8 +173,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
+    TResult Function(_ReviewStream value)? reviewStream,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -183,153 +184,8 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements ChatState {
+abstract class _Loading implements ReviewState {
   const factory _Loading() = _$LoadingImpl;
-}
-
-/// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<ChatList> chatList});
-}
-
-/// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$ChatStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? chatList = null,
-  }) {
-    return _then(_$SuccessImpl(
-      null == chatList
-          ? _value._chatList
-          : chatList // ignore: cast_nullable_to_non_nullable
-              as List<ChatList>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<ChatList> chatList) : _chatList = chatList;
-
-  final List<ChatList> _chatList;
-  @override
-  List<ChatList> get chatList {
-    if (_chatList is EqualUnmodifiableListView) return _chatList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_chatList);
-  }
-
-  @override
-  String toString() {
-    return 'ChatState.success(chatList: $chatList)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(other._chatList, _chatList));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_chatList));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<ChatList> chatList) success,
-    required TResult Function(String message) failure,
-  }) {
-    return success(chatList);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<ChatList> chatList)? success,
-    TResult? Function(String message)? failure,
-  }) {
-    return success?.call(chatList);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<ChatList> chatList)? success,
-    TResult Function(String message)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(chatList);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Success implements ChatState {
-  const factory _Success(final List<ChatList> chatList) = _$SuccessImpl;
-
-  List<ChatList> get chatList;
-  @JsonKey(ignore: true)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -343,7 +199,7 @@ abstract class _$$FailureImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailureImplCopyWithImpl<$Res>
-    extends _$ChatStateCopyWithImpl<$Res, _$FailureImpl>
+    extends _$ReviewStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
@@ -373,7 +229,7 @@ class _$FailureImpl implements _Failure {
 
   @override
   String toString() {
-    return 'ChatState.failure(message: $message)';
+    return 'ReviewState.failure(message: $message)';
   }
 
   @override
@@ -397,8 +253,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ChatList> chatList) success,
     required TResult Function(String message) failure,
+    required TResult Function(List<Review> reviews) reviewStream,
   }) {
     return failure(message);
   }
@@ -407,8 +263,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ChatList> chatList)? success,
     TResult? Function(String message)? failure,
+    TResult? Function(List<Review> reviews)? reviewStream,
   }) {
     return failure?.call(message);
   }
@@ -417,8 +273,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ChatList> chatList)? success,
     TResult Function(String message)? failure,
+    TResult Function(List<Review> reviews)? reviewStream,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -431,8 +287,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
+    required TResult Function(_ReviewStream value) reviewStream,
   }) {
     return failure(this);
   }
@@ -441,8 +297,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
+    TResult? Function(_ReviewStream value)? reviewStream,
   }) {
     return failure?.call(this);
   }
@@ -451,8 +307,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
+    TResult Function(_ReviewStream value)? reviewStream,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -462,11 +318,156 @@ class _$FailureImpl implements _Failure {
   }
 }
 
-abstract class _Failure implements ChatState {
+abstract class _Failure implements ReviewState {
   const factory _Failure(final String message) = _$FailureImpl;
 
   String get message;
   @JsonKey(ignore: true)
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ReviewStreamImplCopyWith<$Res> {
+  factory _$$ReviewStreamImplCopyWith(
+          _$ReviewStreamImpl value, $Res Function(_$ReviewStreamImpl) then) =
+      __$$ReviewStreamImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Review> reviews});
+}
+
+/// @nodoc
+class __$$ReviewStreamImplCopyWithImpl<$Res>
+    extends _$ReviewStateCopyWithImpl<$Res, _$ReviewStreamImpl>
+    implements _$$ReviewStreamImplCopyWith<$Res> {
+  __$$ReviewStreamImplCopyWithImpl(
+      _$ReviewStreamImpl _value, $Res Function(_$ReviewStreamImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reviews = null,
+  }) {
+    return _then(_$ReviewStreamImpl(
+      null == reviews
+          ? _value._reviews
+          : reviews // ignore: cast_nullable_to_non_nullable
+              as List<Review>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ReviewStreamImpl implements _ReviewStream {
+  const _$ReviewStreamImpl(final List<Review> reviews) : _reviews = reviews;
+
+  final List<Review> _reviews;
+  @override
+  List<Review> get reviews {
+    if (_reviews is EqualUnmodifiableListView) return _reviews;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_reviews);
+  }
+
+  @override
+  String toString() {
+    return 'ReviewState.reviewStream(reviews: $reviews)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReviewStreamImpl &&
+            const DeepCollectionEquality().equals(other._reviews, _reviews));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_reviews));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReviewStreamImplCopyWith<_$ReviewStreamImpl> get copyWith =>
+      __$$ReviewStreamImplCopyWithImpl<_$ReviewStreamImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(String message) failure,
+    required TResult Function(List<Review> reviews) reviewStream,
+  }) {
+    return reviewStream(reviews);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(String message)? failure,
+    TResult? Function(List<Review> reviews)? reviewStream,
+  }) {
+    return reviewStream?.call(reviews);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(String message)? failure,
+    TResult Function(List<Review> reviews)? reviewStream,
+    required TResult orElse(),
+  }) {
+    if (reviewStream != null) {
+      return reviewStream(reviews);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_ReviewStream value) reviewStream,
+  }) {
+    return reviewStream(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_ReviewStream value)? reviewStream,
+  }) {
+    return reviewStream?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_ReviewStream value)? reviewStream,
+    required TResult orElse(),
+  }) {
+    if (reviewStream != null) {
+      return reviewStream(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ReviewStream implements ReviewState {
+  const factory _ReviewStream(final List<Review> reviews) = _$ReviewStreamImpl;
+
+  List<Review> get reviews;
+  @JsonKey(ignore: true)
+  _$$ReviewStreamImplCopyWith<_$ReviewStreamImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

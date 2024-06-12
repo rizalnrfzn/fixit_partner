@@ -22,6 +22,7 @@ mixin _$Review {
   String? get review => throw _privateConstructorUsedError;
   int? get rating => throw _privateConstructorUsedError;
   DateTime? get dateTime => throw _privateConstructorUsedError;
+  List<String>? get images => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ReviewCopyWith<Review> get copyWith => throw _privateConstructorUsedError;
@@ -38,7 +39,8 @@ abstract class $ReviewCopyWith<$Res> {
       String? clientPicture,
       String? review,
       int? rating,
-      DateTime? dateTime});
+      DateTime? dateTime,
+      List<String>? images});
 }
 
 /// @nodoc
@@ -60,6 +62,7 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
     Object? review = freezed,
     Object? rating = freezed,
     Object? dateTime = freezed,
+    Object? images = freezed,
   }) {
     return _then(_value.copyWith(
       clientUid: freezed == clientUid
@@ -86,6 +89,10 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      images: freezed == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -103,7 +110,8 @@ abstract class _$$ReviewImplCopyWith<$Res> implements $ReviewCopyWith<$Res> {
       String? clientPicture,
       String? review,
       int? rating,
-      DateTime? dateTime});
+      DateTime? dateTime,
+      List<String>? images});
 }
 
 /// @nodoc
@@ -123,6 +131,7 @@ class __$$ReviewImplCopyWithImpl<$Res>
     Object? review = freezed,
     Object? rating = freezed,
     Object? dateTime = freezed,
+    Object? images = freezed,
   }) {
     return _then(_$ReviewImpl(
       clientUid: freezed == clientUid
@@ -149,6 +158,10 @@ class __$$ReviewImplCopyWithImpl<$Res>
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      images: freezed == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -162,7 +175,9 @@ class _$ReviewImpl implements _Review {
       this.clientPicture,
       this.review,
       this.rating,
-      this.dateTime});
+      this.dateTime,
+      final List<String>? images})
+      : _images = images;
 
   @override
   final String? clientUid;
@@ -176,10 +191,19 @@ class _$ReviewImpl implements _Review {
   final int? rating;
   @override
   final DateTime? dateTime;
+  final List<String>? _images;
+  @override
+  List<String>? get images {
+    final value = _images;
+    if (value == null) return null;
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'Review(clientUid: $clientUid, clientName: $clientName, clientPicture: $clientPicture, review: $review, rating: $rating, dateTime: $dateTime)';
+    return 'Review(clientUid: $clientUid, clientName: $clientName, clientPicture: $clientPicture, review: $review, rating: $rating, dateTime: $dateTime, images: $images)';
   }
 
   @override
@@ -196,12 +220,20 @@ class _$ReviewImpl implements _Review {
             (identical(other.review, review) || other.review == review) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.dateTime, dateTime) ||
-                other.dateTime == dateTime));
+                other.dateTime == dateTime) &&
+            const DeepCollectionEquality().equals(other._images, _images));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, clientUid, clientName,
-      clientPicture, review, rating, dateTime);
+  int get hashCode => Object.hash(
+      runtimeType,
+      clientUid,
+      clientName,
+      clientPicture,
+      review,
+      rating,
+      dateTime,
+      const DeepCollectionEquality().hash(_images));
 
   @JsonKey(ignore: true)
   @override
@@ -217,7 +249,8 @@ abstract class _Review implements Review {
       final String? clientPicture,
       final String? review,
       final int? rating,
-      final DateTime? dateTime}) = _$ReviewImpl;
+      final DateTime? dateTime,
+      final List<String>? images}) = _$ReviewImpl;
 
   @override
   String? get clientUid;
@@ -231,6 +264,8 @@ abstract class _Review implements Review {
   int? get rating;
   @override
   DateTime? get dateTime;
+  @override
+  List<String>? get images;
   @override
   @JsonKey(ignore: true)
   _$$ReviewImplCopyWith<_$ReviewImpl> get copyWith =>

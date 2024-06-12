@@ -11,5 +11,6 @@ class Review with _$Review {
     String? review,
     int? rating,
     DateTime? dateTime,
+    List<String>? images,
   }) = _Review;
 }
